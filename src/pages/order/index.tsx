@@ -1,4 +1,5 @@
 import { Button, Typography } from 'antd'
+import Link from 'next/link'
 import Greeting from 'src/components/Greeting'
 const { Title } = Typography
 
@@ -13,7 +14,11 @@ export default function OrderPage() {
           <Title type="danger">Introduction</Title>
         </Typography>
         <Button color="primary">test</Button>
-        <span css={test}>jjj</span>
+        <Link href="/">
+          <a>
+            <span css={test}>home</span>
+          </a>
+        </Link>
       </div>
     </div>
   )

@@ -1,19 +1,18 @@
-import { Button, Typography } from 'antd'
-import Greeting from 'src/components/Greeting'
+import { Typography } from 'antd'
+import Link from 'next/link'
 const { Title } = Typography
-
-const test = (theme) => ({ color: theme.colors.secondary })
 
 export default function IndexPage() {
   return (
     <div>
       <div className="py-20">
-        <Greeting target={'Next.js Starter Kit'} />
-        <Typography>
-          <Title type="danger">Introduction</Title>
-        </Typography>
-        <Button color="primary">test</Button>
-        <span css={test}>jjj</span>
+        <Link href="/order">
+          <a>
+            <Typography>
+              <Title type="danger">打線を組む</Title>
+            </Typography>
+          </a>
+        </Link>
       </div>
     </div>
   )
