@@ -1,5 +1,5 @@
-import { FormComponent } from '@/components/presentational/order/form'
-import { TitleComponent } from '@/components/presentational/order/title'
+import { FormComponent } from '@/components/presentational/order/Form'
+import { TitleComponent } from '@/components/presentational/order/Title'
 import { css } from '@emotion/core'
 import { Button, Form } from 'antd'
 
