@@ -1,19 +1,18 @@
-import { Button, Typography } from 'antd'
-import Greeting from 'src/components/Greeting'
-const { Title } = Typography
+import { OrderContainer } from '@/components/container/order/index'
+import Link from 'next/link'
 
 const test = (theme) => ({ color: theme.colors.secondary })
 
 export default function OrderPage() {
   return (
-    <div>
-      <div className="py-20">
-        <Greeting target={'Next.js Starter Kit'} />
-        <Typography>
-          <Title type="danger">Introduction</Title>
-        </Typography>
-        <Button color="primary">test</Button>
-        <span css={test}>jjj</span>
+    <div className="">
+      <div className="px-4 py-5">
+        <OrderContainer />
+        <Link href="/">
+          <a>
+            <span css={test}>home</span>
+          </a>
+        </Link>
       </div>
     </div>
   )
