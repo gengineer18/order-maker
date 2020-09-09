@@ -5,15 +5,13 @@ const test = (theme) => ({ color: theme.colors.secondary })
 
 export default function OrderPage() {
   return (
-    <div className="">
-      <div className="px-4 py-5">
-        <OrderContainer />
-        <Link href="/">
-          <a>
-            <span css={test}>home</span>
-          </a>
-        </Link>
-      </div>
+    <div className="px-4 py-5">
+      <OrderContainer />
+      <Link href="/">
+        <a>
+          <span css={test}>home</span>
+        </a>
+      </Link>
     </div>
   )
 }
