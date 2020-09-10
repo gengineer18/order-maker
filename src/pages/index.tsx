@@ -1,22 +1,21 @@
 import { HomeContainer } from '@/components/container/home'
 import axios from 'axios'
 
-export default function HomePage({ res }) {
+export default function HomePage({ data }) {
   return (
     <>
-      <p>{res}</p>
+      <p>{data.firstName}</p>
       <HomeContainer />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const response = await axios.get('https://asia-northeast1-order-maker.cloudfunctions.net/api/hello')
-  const data = await response.data
-  const res = await data.res
+  const response = await axios.get('https://asia-northeast1-order-maker.cloudfunctions.net/mysqlDemo')
+  const data = await response.data[0]
   return {
     props: {
-      res,
+      data,
     },
   }
 }

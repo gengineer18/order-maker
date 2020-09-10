@@ -28,3 +28,8 @@ yarn-error.log*
 .idea/
 .vercel
 .eslintcache
+
+# config
+cloud_sql_proxy
+order-maker-*
+.runtimeconfig.json
