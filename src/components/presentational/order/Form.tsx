@@ -5,7 +5,7 @@ const { Option } = Select
 
 export const FormComponent = () => {
   const formPart = (num: number) => (
-    <div css={css({ display: `flex`, alignItems: `center` })}>
+    <div css={css({ display: `flex`, alignItems: `center` })} key={num}>
       <div className="mr-4">{num}</div>
       <div className="rounded border-solid border border-gray-600 p-4 my-2" css={css({ width: `100%` })}>
         <Form.Item
