@@ -43,7 +43,7 @@ exports.getAllPosts = https.onRequest(async (req, res) => {
 
   try {
     const results = await new Promise((resolve, reject) => {
-      const query = 'select * from posts order by `updatedAt`'
+      const query = 'select * from posts order by `updatedAt` desc'
       connection.query(query, (error, results) => {
         if (error) {
           reject(error)
@@ -88,7 +88,7 @@ exports.getAPost = https.onRequest(async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
       const query =
-        'select posts.postId, posts.title, posts.userName, postData.order, postData.position, postData.description, posts.createdAt, posts.updatedAt from posts inner join postData on posts.postId=postData.postId where posts.postId=? order by posts.updatedAt'
+        'select posts.postId, posts.title, posts.userName, postData.order, postData.position, postData.description, posts.createdAt, posts.updatedAt from posts inner join postData on posts.postId=postData.postId where posts.postId=? order by postData.order'
       connection.query(query, postId, (error, results) => {
         if (error) {
           reject(error)
