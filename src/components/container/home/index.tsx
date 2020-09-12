@@ -1,7 +1,9 @@
 import { Description } from '@/components/presentational/home/Description'
 import { TDescription } from '@/types/Description'
+import { TPost } from '@/types/PostData'
 import { Button, Collapse, Typography } from 'antd'
 import Link from 'next/link'
+import React from 'react'
 const { Panel } = Collapse
 
 const orderDescription: TDescription = {
@@ -34,7 +36,7 @@ const positionDescription: TDescription = {
   ],
 }
 
-export const HomeContainer = () => {
+export const HomeContainer = ({ data }: { data: TPost[] }) => {
   return (
     <div>
       <Typography className="text-center">思い思いの打線を組んで、Twitterで公開できるサイトです。</Typography>
@@ -95,6 +97,18 @@ export const HomeContainer = () => {
         </a>
       </Link>
       <Typography>新着の打順</Typography>
+      {data.length > 0 &&
+        data.map((data) => {
+          return (
+            <React.Fragment key={data.postId}>
+              <Link href="/post/[id]" as={`/post/${data.postId}`} key={data.postId}>
+                <a>
+                  <p>{data.title}</p>
+                </a>
+              </Link>
+            </React.Fragment>
+          )
+        })}
     </div>
   )
 }
