@@ -65,7 +65,6 @@ exports.getAllPost = https.onRequest(async (req, res) => {
     res.status(500).send(err)
   } finally {
     connection.release()
-    mysqlPool.end()
   }
 })
 
@@ -192,6 +191,5 @@ exports.insertPost = https.onRequest(async (req, res) => {
     res.status(500).send(err)
   } finally {
     connection.release()
-    mysqlPool.end()
   }
 })
