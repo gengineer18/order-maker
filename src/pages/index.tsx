@@ -5,22 +5,11 @@ import { GetStaticProps } from 'next'
 import React from 'react'
 
 export default function HomePage({ data }: { data: TPost[] }) {
-  return (
-    <>
-      {data.map((data) => (
-        <React.Fragment key={data.postId}>
-          <p>{data.postId}</p>
-          <p>{data.title}</p>
-          <p>{data.userName}</p>
-        </React.Fragment>
-      ))}
-      <HomeContainer />
-    </>
-  )
+  return <HomeContainer data={data} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await axios.get('https://asia-northeast1-order-maker.cloudfunctions.net/getAllPost')
+  const response = await axios.get('https://asia-northeast1-order-maker.cloudfunctions.net/getAllPosts')
   const data: TPost[] = await response.data
   return {
     props: {
