@@ -12,7 +12,6 @@ export const OrderContainer = () => {
       .then((response) => {
         console.log(response.data)
       })
-    console.log('Success:', values)
   }
 
   const onFinishFailed = (errorInfo) => {

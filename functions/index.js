@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
 
 let mysqlPool
 
-exports.getAllPost = https.onRequest(async (req, res) => {
+exports.getAllPosts = https.onRequest(async (req, res) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 
@@ -43,8 +43,53 @@ exports.getAllPost = https.onRequest(async (req, res) => {
 
   try {
     const results = await new Promise((resolve, reject) => {
-      const query = 'select * from posts'
+      const query = 'select * from posts order by `updatedAt` desc'
       connection.query(query, (error, results) => {
+        if (error) {
+          reject(error)
+        }
+        resolve(results)
+      })
+    })
+
+    res.status(200).send(JSON.stringify(results))
+  } catch (err) {
+    await new Promise((resolve, reject) => {
+      connection.rollback((error, results) => {
+        if (error) reject(error)
+        resolve(results)
+      })
+    })
+    console.error('!!!!!!!!!!!!!GET ERROR!!!!!!!!!!!!!')
+    console.error(err)
+    res.status(500).send(err)
+  } finally {
+    connection.release()
+  }
+})
+
+exports.getAPost = https.onRequest(async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+
+  if (!mysqlPool) {
+    mysqlPool = mysql.createPool(mysqlConfig)
+  }
+
+  const connection = await new Promise((resolve, reject) => {
+    mysqlPool.getConnection((error, connection) => {
+      if (error) reject(error)
+      resolve(connection)
+    })
+  })
+
+  const { postId } = req.query
+
+  try {
+    const results = await new Promise((resolve, reject) => {
+      const query =
+        'select posts.postId, posts.title, posts.userName, postData.order, postData.position, postData.description, posts.createdAt, posts.updatedAt from posts inner join postData on posts.postId=postData.postId where posts.postId=? order by postData.order'
+      connection.query(query, postId, (error, results) => {
         if (error) {
           reject(error)
         }

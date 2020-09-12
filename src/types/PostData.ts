@@ -1,15 +1,17 @@
 export type TPost = {
   postId: string
-  userName: string
   title: string
+  userName: string
   createdAt: Date
   updatedAt: Date
 }
 
 export type TPostData = {
   postId: string
-  position: number
+  title: string
+  userName: string
   order: number
+  position: number
   description: string
   createdAt: Date
   updatedAt: Date
