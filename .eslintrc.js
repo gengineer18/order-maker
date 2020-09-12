@@ -87,6 +87,7 @@ module.exports = {
     'no-useless-constructor': 'off',
     // 依存モジュールを並び替える
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
+    '@typescript-eslint/no-var-requires': 'off',
     'import/order': [
       'error',
       {

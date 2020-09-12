@@ -9,7 +9,7 @@ export const FormComponent = () => {
       <div className="mr-4">{num}</div>
       <div className="rounded border-solid border border-gray-600 p-4 my-2" css={css({ width: `100%` })}>
         <Form.Item
-          name={`position-${num}`}
+          name={`position${num}`}
           rules={[{ required: true, message: '入力してください！' }]}
           css={css({ marginBottom: 0, display: `inline-block`, width: `3.5rem` })}
         >
@@ -26,7 +26,7 @@ export const FormComponent = () => {
           </Select>
         </Form.Item>
         <Form.Item
-          name={`order-${num}`}
+          name={`description${num}`}
           rules={[{ required: true, message: '入力してください！' }]}
           css={css({ marginBottom: 0, display: `inline-block`, width: `calc(100% - 3.5rem)` })}
         >
