@@ -15,20 +15,30 @@ const theme = {
   },
 }
 
+const wrapper = css({
+  minHeight: `calc(100vh - 70px)`,
+})
+
 const layout = css({
-  maxWidth: '960px',
+  maxWidth: `960px`,
   margin: `0 auto`,
-  padding: `20px 0`,
+  padding: `20px 12px`,
+})
+
+const footer = css({
+  height: `50px`,
 })
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Content css={layout}>
-        <Component {...pageProps} />
-      </Content>
-      <Footer />
+      <div css={wrapper}>
+        <Header />
+        <Content css={layout}>
+          <Component {...pageProps} />
+        </Content>
+      </div>
+      <Footer css={footer} />
     </ThemeProvider>
   )
 }

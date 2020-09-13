@@ -223,6 +223,7 @@ exports.insertPost = https.onRequest(async (req, res) => {
       })
     })
 
+    results.postId = postId
     res.status(200).send(JSON.stringify(results))
   } catch (err) {
     await new Promise((resolve, reject) => {

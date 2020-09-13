@@ -1,23 +1,11 @@
+import { PostContainer } from '@/components/container/post'
 import { TPost, TPostData } from '@/types/PostData'
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 
 export default function PostIdPage({ data }: { data: TPostData[] }) {
-  return (
-    <div>
-      {data?.length > 0 &&
-        data.map((data) => {
-          return (
-            <React.Fragment key={data.order}>
-              <p>{data.order}番</p>
-              <p>{data.position}</p>
-              <p>{data.description}</p>
-            </React.Fragment>
-          )
-        })}
-    </div>
-  )
+  return <PostContainer data={data} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

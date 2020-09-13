@@ -30,7 +30,7 @@ export const FormComponent = () => {
           rules={[{ required: true, message: '入力してください！' }]}
           css={css({ marginBottom: 0, display: `inline-block`, width: `calc(100% - 3.5rem)` })}
         >
-          <Input />
+          <Input placeholder={`${num}番バッター`} />
         </Form.Item>
       </div>
     </div>
