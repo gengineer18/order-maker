@@ -5,6 +5,7 @@ import { Header } from '@/components/common/Header'
 import { css } from '@emotion/core'
 import { Layout } from 'antd'
 import { ThemeProvider } from 'emotion-theming'
+import Head from 'next/head'
 
 const { Content } = Layout
 
@@ -31,15 +32,21 @@ const footer = css({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <div css={wrapper}>
-        <Header />
-        <Content css={layout}>
-          <Component {...pageProps} />
-        </Content>
-      </div>
-      <Footer css={footer} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>打線組んだｗｗメーカー</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <div css={wrapper}>
+          <Header />
+          <Content css={layout}>
+            <Component {...pageProps} />
+          </Content>
+        </div>
+        <Footer css={footer} />
+      </ThemeProvider>
+    </>
   )
 }
 
