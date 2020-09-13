@@ -9,9 +9,9 @@ export const TitleComponent = () => {
         rules={[{ required: true, message: '入力してください！' }]}
         css={css({ marginBottom: 0 })}
       >
-        <Input />
+        <Input placeholder="打線のテーマ" />
       </Form.Item>
-      で打線組んだｗｗ
+      <span css={css({ fontWeight: `bold`, fontSize: `1rem` })}>で打線組んだｗｗ</span>
     </div>
   )
 }

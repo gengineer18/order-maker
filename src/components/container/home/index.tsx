@@ -1,10 +1,13 @@
 import { Description } from '@/components/presentational/home/Description'
 import { TDescription } from '@/types/Description'
 import { TPost } from '@/types/PostData'
-import { Button, Collapse, Typography } from 'antd'
-import Link from 'next/link'
+import { css } from '@emotion/core'
+import { Button, Card, Collapse, Typography } from 'antd'
+import NextLink from 'next/link'
 import React from 'react'
+
 const { Panel } = Collapse
+const { Title, Text, Link } = Typography
 
 const orderDescription: TDescription = {
   title: '打順（印象）',
@@ -41,7 +44,7 @@ export const HomeContainer = ({ data }: { data: TPost[] }) => {
     <div>
       <Typography className="text-center">思い思いの打線を組んで、Twitterで公開できるサイトです。</Typography>
       <Typography className="text-center">あなたのオリジナリティ溢れる打線を作りましょう！</Typography>
-      <Collapse>
+      <Collapse css={css({ marginTop: `1rem` })}>
         <Panel header="「打線組んだ」とは？ (なんJ用語集wikiより引用)" key="whatIsOrderMaker">
           <blockquote>
             <p>様々な物事の評価を野球の打線（スターティング・メンバー）の形式で表すスレのこと。</p>
@@ -50,13 +53,13 @@ export const HomeContainer = ({ data }: { data: TPost[] }) => {
           </blockquote>
           <p>
             引用元:{' '}
-            <a
+            <Link
               href="https://wikiwiki.jp/livejupiter/%E6%89%93%E7%B7%9A%E7%B5%84%E3%82%93%E3%81%A0"
               target="_blank"
               rel="noopener noreferrer"
             >
               <cite>https://wikiwiki.jp/livejupiter/打線組んだ</cite>
-            </a>
+            </Link>
           </p>
         </Panel>
       </Collapse>
@@ -79,33 +82,37 @@ export const HomeContainer = ({ data }: { data: TPost[] }) => {
           </blockquote>
           <p>
             引用元:{' '}
-            <a
+            <Link
               href="https://dic.nicovideo.jp/a/%E3%80%9C%E3%81%A7%E6%89%93%E7%B7%9A%E7%B5%84%E3%82%93%E3%81%A0"
               target="_blank"
               rel="noopener noreferrer"
             >
               <cite>https://dic.nicovideo.jp/a/〜で打線組んだ</cite>
-            </a>
+            </Link>
           </p>
         </Panel>
       </Collapse>
-      <Link href="/order">
-        <a>
-          <Button block type="primary">
-            ログイン不要！自分の打線を組む
-          </Button>
-        </a>
-      </Link>
-      <Typography>新着の打順</Typography>
+      <div className="text-center" css={css({ marginTop: `1rem` })}>
+        <NextLink href="/order">
+          <a>
+            <Button type="primary">ログイン不要！自分の打線を組む</Button>
+          </a>
+        </NextLink>
+      </div>
+      <Title className="text-center" level={3} css={css({ marginTop: `1rem` })}>
+        新着打線
+      </Title>
       {data.length > 0 &&
         data.map((data) => {
           return (
             <React.Fragment key={data.postId}>
-              <Link href="/post/[id]" as={`/post/${data.postId}`} key={data.postId}>
+              <NextLink href="/post/[id]" as={`/post/${data.postId}`} key={data.postId}>
                 <a>
-                  <p>{data.title}</p>
+                  <Card css={css({ marginTop: `1rem`, border: `1px solid #718096` })}>
+                    <Text>{data.title}で打線組んだｗｗ</Text>
+                  </Card>
                 </a>
-              </Link>
+              </NextLink>
             </React.Fragment>
           )
         })}
