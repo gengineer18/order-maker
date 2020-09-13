@@ -64,7 +64,7 @@ export const OrderContainer = () => {
   const onClickTwitter = () => {
     const title = orderValues ? orderValues.title : ''
 
-    const url = `https://order-maker.vercel.app/post/${postId}`
+    const url = `https://order-maker.woodsatweb.com/post/${postId}`
     const text = encodeURIComponent(`${title} で打線組んだｗｗ`)
     const hashtag = encodeURIComponent('打線組んだメーカー')
     const twitterUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}&hashtags=${hashtag}`
