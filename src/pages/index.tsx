@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next'
 import React from 'react'
 
 export default function HomePage({ data }: { data: TPost[] }) {
-  return <HomeContainer data={data} />
+  return data && <HomeContainer data={data} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {

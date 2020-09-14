@@ -5,7 +5,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 
 export default function PostIdPage({ data }: { data: TPostData[] }) {
-  return <PostContainer data={data} />
+  return data && <PostContainer data={data} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

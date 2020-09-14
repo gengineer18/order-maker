@@ -1,5 +1,3 @@
-type PositionNumber = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
-
 export const getPositionName = (positionNumber: number) => {
   switch (positionNumber) {
     case 1: {
